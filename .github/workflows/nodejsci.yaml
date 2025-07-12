@@ -1,0 +1,20 @@
+name: ci pipeline creation for nodejs application through github actions
+
+on: push
+
+jobs:
+    buildjob_reactjs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the code from repo
+              uses: actions/checkout@v4
+
+            - name: install node on the agent machine
+              uses: actions/setup-node@v4
+              with:
+                node-version: 'latest'
+            - name: run npm install 
+              run: npm install
+
+            - name: run npm build
+              run: npm run build
